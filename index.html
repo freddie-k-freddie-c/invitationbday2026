@@ -6,260 +6,19 @@
     <title>David's 30th Birthday</title>
     <style>
         :root {
-            --bg-color: #fcfcfc;
-            --text-color: #111111;
-            --accent-color: #555555;
-            --border-color: #e5e5e5;
-            --button-bg: #111111;
-            --button-text: #ffffff;
+            --bg-color: #0d0d0d;
+            --card-bg: #141414;
+            --text-color: #f2f2f2;
+            --muted-color: #999999;
+            --border-color: #262626;
+            --font-serif: 'Times New Roman', Times, Baskerville, Georgia, serif;
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 24px;
-        }
-
-        .container {
-            max-width: 420px;
-            width: 100%;
-            text-align: center;
-        }
-
-        .subtitle {
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: var(--accent-color);
-            margin-bottom: 12px;
-        }
-
-        h1 {
-            font-size: 2.2rem;
-            font-weight: 300;
-            letter-spacing: -0.5px;
-            margin-bottom: 32px;
-        }
-
-        .divider {
-            height: 1px;
-            background-color: var(--border-color);
-            margin: 32px 0;
-        }
-
-        .details {
-            margin-bottom: 32px;
-        }
-
-        .date-time {
-            font-size: 1.25rem;
-            font-weight: 400;
-            margin-bottom: 16px;
-        }
-
-        .location-link {
-            display: inline-block;
-            color: var(--text-color);
-            text-decoration: none;
-            font-size: 0.95rem;
-            border-bottom: 1px solid var(--text-color);
-            padding-bottom: 2px;
-            transition: opacity 0.2s;
-        }
-
-        .location-link:hover {
-            opacity: 0.6;
-        }
-
-        /* Countdown Timer */
-        .timer-label {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--accent-color);
-            margin-bottom: 12px;
-        }
-
-        .countdown {
-            display: flex;
-            justify-content: center;
-            gap: 16px;
-        }
-
-        .time-box {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .time-value {
-            font-size: 1.5rem;
-            font-weight: 300;
-        }
-
-        .time-unit {
-            font-size: 0.65rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--accent-color);
-            margin-top: 4px;
-        }
-
-        /* Simplified RSVP Form */
-        .rsvp-section {
-            text-align: left;
-        }
-
-        .form-group {
-            margin-bottom: 16px;
-        }
-
-        input[type="text"] {
-            width: 100%;
-            padding: 14px;
-            border: 1px solid var(--border-color);
-            background: transparent;
-            font-size: 0.95rem;
-            color: var(--text-color);
-            outline: none;
-            border-radius: 0;
-            -webkit-appearance: none;
-        }
-
-        input[type="text"]:focus {
-            border-color: var(--text-color);
-        }
-
-        .buttons {
-            display: flex;
-            gap: 12px;
-            margin-top: 12px;
-        }
-
-        .btn {
-            flex: 1;
-            padding: 14px;
-            border: 1px solid var(--button-bg);
-            background-color: transparent;
-            color: var(--button-bg);
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: all 0.2s;
-            border-radius: 0;
-        }
-
-        .btn-primary {
-            background-color: var(--button-bg);
-            color: var(--button-text);
-        }
-
-        .btn:hover {
-            opacity: 0.8;
-        }
-    </style>
-</head>
-<body>
-
-    <div class="container">
-        <p class="subtitle">You are invited</p>
-        <h1>David's 30th</h1>
-
-        <div class="details">
-            <p class="date-time">29 August &middot; 19:00</p>
-            <!-- Replace the href below with your exact 2GIS venue link -->
-            <a href="https://2gis.kz" target="_blank" class="location-link">Open location in 2GIS &rarr;</a>
-        </div>
-
-        <div class="divider"></div>
-
-        <!-- Live Countdown -->
-        <p class="timer-label">Time until event</p>
-        <div class="countdown">
-            <div class="time-box">
-                <span class="time-value" id="days">00</span>
-                <span class="time-unit">Days</span>
-            </div>
-            <div class="time-box">
-                <span class="time-value" id="hours">00</span>
-                <span class="time-unit">Hours</span>
-            </div>
-            <div class="time-box">
-                <span class="time-value" id="minutes">00</span>
-                <span class="time-unit">Mins</span>
-            </div>
-            <div class="time-box">
-                <span class="time-value" id="seconds">00</span>
-                <span class="time-unit">Secs</span>
-            </div>
-        </div>
-
-        <div class="divider"></div>
-
-        <!-- 1-Click RSVP -->
-        <div class="rsvp-section">
-            <div class="form-group">
-                <input type="text" id="guestName" placeholder="Your Name" required>
-            </div>
-            <div class="buttons">
-                <button class="btn btn-primary" onclick="sendRSVP('Attending')">I'll be there</button>
-                <button class="btn" onclick="sendRSVP('Regrets')">Can't make it</button>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        // Set event target date (August 29, 2026, 19:00)
-        const eventDate = new Date("August 29, 2026 19:00:00").getTime();
-
-        function updateCountdown() {
-            const now = new Date().getTime();
-            const distance = eventDate - now;
-
-            if (distance < 0) {
-                document.querySelector(".countdown").innerHTML = "<p style='font-size:0.9rem;'>The event has started!</p>";
-                return;
-            }
-
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 100Here is a clean, modern, and single-file HTML/CSS template designed with a sleek dark theme. It includes a live countdown timer, a direct link to 2GIS, and an easy RSVP button that opens a pre-filled WhatsApp message.
-
-You can save the code below as an `invitation.html` file on your computer and open it in any browser, or host it on platforms like GitHub Pages, Netlify, or Vercel.
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>David is Turning 30</title>
-    <style>
-        :root {
-            --bg-color: #0f0f11;
-            --card-bg: #18181c;
-            --text-color: #f4f4f5;
-            --accent-color: #ffffff;
-            --muted-color: #8e8e93;
-            --border-color: #2c2c30;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: var(--font-serif);
         }
 
         body {
@@ -274,104 +33,180 @@ You can save the code below as an `invitation.html` file on your computer and op
 
         .container {
             width: 100%;
-            max-width: 420px;
+            max-width: 400px;
             background: var(--card-bg);
             border: 1px solid var(--border-color);
-            border-radius: 24px;
-            padding: 40px 28px;
+            padding: 48px 32px;
             text-align: center;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
         }
 
         .tag {
-            font-size: 0.75rem;
-            letter-spacing: 3px;
+            font-size: 0.8rem;
+            letter-spacing: 4px;
             text-transform: uppercase;
             color: var(--muted-color);
-            margin-bottom: 12px;
+            margin-bottom: 16px;
+            font-style: italic;
         }
 
         h1 {
-            font-size: 2.2rem;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-            margin-bottom: 24px;
+            font-size: 2.4rem;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            margin-bottom: 28px;
+            line-height: 1.2;
         }
 
         .details {
             border-top: 1px solid var(--border-color);
             border-bottom: 1px solid var(--border-color);
-            padding: 20px 0;
-            margin-bottom: 28px;
+            padding: 24px 0;
+            margin-bottom: 32px;
         }
 
         .detail-item {
-            font-size: 1.1rem;
-            font-weight: 500;
+            font-size: 1.25rem;
             margin: 6px 0;
+            letter-spacing: 0.5px;
         }
 
         .location-link {
             display: inline-block;
-            margin-top: 10px;
-            color: var(--accent-color);
+            margin-top: 14px;
+            color: var(--text-color);
             text-decoration: none;
             font-size: 0.95rem;
-            border-bottom: 1px solid var(--accent-color);
+            font-style: italic;
+            border-bottom: 1px solid var(--text-color);
             padding-bottom: 2px;
             transition: opacity 0.2s;
         }
 
         .location-link:hover {
-            opacity: 0.7;
+            opacity: 0.6;
         }
 
         .countdown-title {
-            font-size: 0.8rem;
-            letter-spacing: 1.5px;
+            font-size: 0.75rem;
+            letter-spacing: 3px;
             text-transform: uppercase;
             color: var(--muted-color);
-            margin-bottom: 12px;
+            margin-bottom: 16px;
         }
 
         .timer {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 32px;
+            margin-bottom: 36px;
         }
 
         .time-box {
             flex: 1;
-            padding: 8px;
         }
 
         .number {
-            font-size: 1.6rem;
-            font-weight: 600;
+            font-size: 1.75rem;
+            font-weight: 400;
         }
 
         .label {
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             color: var(--muted-color);
             text-transform: uppercase;
+            letter-spacing: 1.5px;
             margin-top: 4px;
+        }
+
+        /* Dynamic RSVP Form Styling */
+        .rsvp-section {
+            border-top: 1px solid var(--border-color);
+            padding-top: 28px;
+            text-align: left;
+        }
+
+        .counter-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .counter-label {
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--muted-color);
+        }
+
+        .counter-controls {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .btn-counter {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            width: 32px;
+            height: 32px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .btn-counter:hover {
+            border-color: var(--text-color);
+        }
+
+        .guest-count-num {
+            font-size: 1.1rem;
+            width: 16px;
+            text-align: center;
+        }
+
+        .inputs-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .name-input {
+            width: 100%;
+            padding: 12px;
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .name-input:focus {
+            border-color: var(--text-color);
         }
 
         .rsvp-btn {
             display: block;
             width: 100%;
-            background-color: var(--accent-color);
+            background-color: var(--text-color);
             color: var(--bg-color);
             text-decoration: none;
             font-size: 1rem;
             font-weight: 600;
+            letter-spacing: 1px;
             padding: 16px 0;
-            border-radius: 12px;
-            transition: transform 0.1s ease, opacity 0.2s ease;
+            text-align: center;
+            transition: opacity 0.2s;
+            cursor: pointer;
         }
 
-        .rsvp-btn:active {
-            transform: scale(0.98);
+        .rsvp-btn:hover {
+            opacity: 0.85;
         }
     </style>
 </head>
@@ -384,8 +219,8 @@ You can save the code below as an `invitation.html` file on your computer and op
     <div class="details">
         <div class="detail-item">August 29</div>
         <div class="detail-item">19:00</div>
-        <!-- Replace the href string with your exact 2GIS location link -->
-        <a href="[https://2gis.kz](https://2gis.kz)" target="_blank" class="location-link">Open Location in 2GIS ↗</a>
+        <!-- Replace href with your 2GIS link -->
+        <a href="https://2gis.kz" target="_blank" class="location-link">Open location in 2GIS &#8594;</a>
     </div>
 
     <div class="countdown-title">Time Until Event</div>
@@ -408,15 +243,30 @@ You can save the code below as an `invitation.html` file on your computer and op
         </div>
     </div>
 
-    <!-- Replace 1234567890 with your phone number (including country code, e.g., 77012345678) -->
-    <a href="[https://wa.me/1234567890?text=Count%20me%20in%20for%20David's%2030th](https://wa.me/1234567890?text=Count%20me%20in%20for%20David's%2030th)!" class="rsvp-btn">
-        RSVP via WhatsApp
-    </a>
+    <!-- Interactive RSVP Section -->
+    <div class="rsvp-section">
+        <div class="counter-row">
+            <span class="counter-label">Guests</span>
+            <div class="counter-controls">
+                <button type="button" class="btn-counter" onclick="adjustGuests(-1)">&#8722;</button>
+                <span class="guest-count-num" id="guestCount">1</span>
+                <button type="button" class="btn-counter" onclick="adjustGuests(1)">&#43;</button>
+            </div>
+        </div>
+
+        <div class="inputs-container" id="inputsContainer">
+            <input type="text" class="name-input" placeholder="First Name" id="guest1" required>
+        </div>
+
+        <a id="whatsappBtn" href="#" class="rsvp-btn" onclick="sendRSVP(event)">
+            RSVP VIA WHATSAPP
+        </a>
+    </div>
 </div>
 
 <script>
-    // Event Date: August 29, 2026 at 19:00
-    const targetDate = new Date("August 29, 2026 19:00:00").getTime();
+    // Countdown Timer Logic
+    const targetDate = new Date("2026-08-29T19:00:00+05:00").getTime();
 
     function updateTimer() {
         const now = new Date().getTime();
@@ -439,9 +289,58 @@ You can save the code below as an `invitation.html` file on your computer and op
             document.getElementById("secs").innerText = "00";
         }
     }
-
-    setInterval(updateTimer, 1000);
     updateTimer();
+    setInterval(updateTimer, 1000);
+
+    // Guest Counter Logic (Max: 2)
+    let currentGuests = 1;
+    const maxGuests = 2;
+    const phoneNum = "1234567890"; // REPLACE WITH YOUR PHONE NUMBER
+
+    function adjustGuests(change) {
+        const newCount = currentGuests + change;
+        if (newCount >= 1 && newCount <= maxGuests) {
+            currentGuests = newCount;
+            document.getElementById("guestCount").innerText = currentGuests;
+            renderInputs();
+        }
+    }
+
+    function renderInputs() {
+        const container = document.getElementById("inputsContainer");
+        const existingVal1 = document.getElementById("guest1") ? document.getElementById("guest1").value : "";
+        const existingVal2 = document.getElementById("guest2") ? document.getElementById("guest2").value : "";
+
+        let html = `<input type="text" class="name-input" placeholder="Your First Name" id="guest1" value="${existingVal1}">`;
+        
+        if (currentGuests === 2) {
+            html += `<input type="text" class="name-input" placeholder="Guest 2 First Name" id="guest2" value="${existingVal2}">`;
+        }
+        
+        container.innerHTML = html;
+    }
+
+    function sendRSVP(e) {
+        e.preventDefault();
+        const name1 = document.getElementById("guest1").value.trim();
+        
+        if (!name1) {
+            alert("Please enter your name.");
+            return;
+        }
+
+        let message = `Hi David, ${name1}`;
+        if (currentGuests === 2) {
+            const name2 = document.getElementById("guest2") ? document.getElementById("guest2").value.trim() : "";
+            if (name2) {
+                message += ` and ${name2}`;
+            }
+        }
+        message += ` will be attending your 30th birthday!`;
+
+        const waUrl = `https://wa.me/${phoneNum}?text=${encodeURIComponent(message)}`;
+        window.open(waUrl, '_blank');
+    }
 </script>
 
 </body>
